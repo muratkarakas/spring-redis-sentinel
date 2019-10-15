@@ -1,0 +1,7 @@
+{
+  "squareCache": {
+    "ttl": 15000000,
+    "maxIdleTime": 10000000,
+    "maxSize": 100	
+  }
+}

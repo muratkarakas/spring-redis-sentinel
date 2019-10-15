@@ -1,0 +1,9 @@
+ocf:
+  cache:
+    redis:
+      host: ${REDIS_CACHE_HOST:localhost}
+      port: ${REDIS_CACHE_PORT:6379}
+      type: sentinel
+      masterName: mymaster
+      sentinelAddresses:
+        - redis://${REDIS_CACHE_HOST:redis-sentinel}:26379 

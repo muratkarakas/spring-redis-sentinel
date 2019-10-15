@@ -1,0 +1,31 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: default
+  name: spring-sentinel
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-sentinel
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: spring-sentinel
+        version: v1
+    spec:
+      containers:
+      - image: mkarakas/spring-sentinel
+        imagePullPolicy: Always
+        name: spring-sentinel 
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources:
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+            requests:
+              cpu: "100m"
+              memory: "256Mi"

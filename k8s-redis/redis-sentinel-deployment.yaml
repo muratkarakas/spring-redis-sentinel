@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: redis-sentinel
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: redis-sentinel  
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: redis-sentinel  
+    spec:
+      containers:
+      - env:
+        - name: "TZ"
+          value: "Europe/Istanbul"
+        - name: REDIS_MASTER_HOST
+          value: redis-0.redis
+        image: bitnami/redis-sentinel:latest
+        name: redis-sentinel
+        ports:
+        - containerPort: 26379
